@@ -9,6 +9,91 @@
 ### Spark
 
 * `https://dlcdn.apache.org/spark/spark-3.2.0/spark-3.2.0-bin-hadoop3.2.tgz`
+* 这是 **mac + Homebrew Python 的正常保护机制**，不是你装错了。
+
+意思是：
+👉 你现在的 `pip` 在系统管理的 Python 环境里，mac 不让你直接乱装包，怕把系统 Python 或 Homebrew 搞坏。
+
+---
+
+# 最推荐解决方法：用虚拟环境
+
+直接复制下面这几行：
+
+```bash
+python3 -m venv ~/spark-env
+source ~/spark-env/bin/activate
+pip install pyspark
+```
+
+安装完后检查：
+
+```bash
+python --version
+pip --version
+python -c "import pyspark; print(pyspark.__version__)"
+```
+
+---
+
+# 以后怎么用
+
+每次要用 Spark 前，先开环境：
+
+```bash
+source ~/spark-env/bin/activate
+```
+
+然后启动：
+
+```bash
+pyspark
+```
+
+---
+
+# 如果提示没有 venv
+
+先装：
+
+```bash
+python3 -m ensurepip --upgrade
+```
+
+如果还是不行，再告诉我报错。
+
+---
+
+# 不推荐但能用的方法
+
+你也可以强行装：
+
+```bash
+pip install pyspark --break-system-packages
+```
+
+但这个不稳，容易把 Homebrew Python 搞乱。
+**你现在不要用这个。**
+
+---
+
+# 你现在该走的完整流程
+
+```bash
+python3 -m venv ~/spark-env
+source ~/spark-env/bin/activate
+pip install pyspark
+pyspark
+```
+
+---
+
+# 这个错误一句话理解
+
+**PEP 668** 在阻止你往系统 Python 里直接装第三方包，所以要改用虚拟环境。
+
+把你下一步终端输出发我，我可以直接帮你继续看。
+
 
 ### 环境要求
 
