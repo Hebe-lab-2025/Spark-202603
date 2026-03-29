@@ -16,3 +16,4 @@ __pycache__/
 # Spark
 *.tgz
 spark-*
+data/input/mini.json
