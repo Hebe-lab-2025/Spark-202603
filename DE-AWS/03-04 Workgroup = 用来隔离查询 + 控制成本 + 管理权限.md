@@ -210,15 +210,19 @@ ON l.user_id = o.user_id;
 # 🧭 一、Workgroup 是什么？（本质🔥）
 
 ![Image](https://miro.medium.com/0%2AFYSfagdhwTedEBSx.png)
+
 加油----
 
 ![Image](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2019/07/17/AthenaWorkgroups3.jpg)
+
 加油----
 
 ![Image](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2022/07/08/athena001.png)
+
 加油----
 
 ![Image](https://miro.medium.com/0%2A8rGAJPl5f4RQdER-.png)
+
 加油----
 
 👉 本质：
