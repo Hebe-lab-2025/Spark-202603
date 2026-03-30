@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>0330.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E2%AD%90-%E4%B8%80star-stories%E9%9D%A2%E8%AF%95%E6%95%85%E4%BA%8B">⭐ 一、STAR Stories（面试故事）</h1>
+<h2 id="%F0%9F%93%8A-%E6%80%BB%E8%A7%88%E8%A1%A8%E5%8F%AF%E7%9B%B4%E6%8E%A5%E5%A4%8D%E4%B9%A0">📊 总览表（可直接复习）</h2>
+<table>
+<thead>
+<tr>
+<th>Story</th>
+<th>场景</th>
+<th>核心能力</th>
+<th>对应LP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Story 1</td>
+<td>Debug pipeline 不触发</td>
+<td>Dive Deep</td>
+<td>Dive Deep</td>
+</tr>
+<tr>
+<td>Story 2</td>
+<td>架构先打通再写逻辑</td>
+<td>Ownership</td>
+<td>Ownership</td>
+</tr>
+<tr>
+<td>Story 3</td>
+<td>多 Lambda 解耦设计</td>
+<td>System Design</td>
+<td>Invent &amp; Simplify</td>
+</tr>
+<tr>
+<td>Story 4</td>
+<td>Filter 优化 routing</td>
+<td>Optimization</td>
+<td>Bias for Action</td>
+</tr>
+<tr>
+<td>Story 5</td>
+<td>CloudWatch 定位问题</td>
+<td>Debug</td>
+<td>Dive Deep</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="%E2%AD%90-story-1lambda-%E6%B2%A1%E8%A7%A6%E5%8F%91debug">⭐ Story 1：Lambda 没触发（Debug）</h1>
+<h2 id="%E2%AD%90-star">⭐ STAR</h2>
+<p><strong>Situation</strong>
+在搭建 SNS → SQS → Lambda pipeline 时，Lambda 没有输出日志。</p>
+<p><strong>Task</strong>
+需要定位为什么 Lambda 没被触发。</p>
+<p><strong>Action</strong></p>
+<ul>
+<li>
+<p>先检查 CloudWatch（没有 log → Lambda 没执行）</p>
+</li>
+<li>
+<p>反推链路：</p>
+<ul>
+<li>检查 Lambda trigger（SQS）</li>
+<li>检查 SNS subscription</li>
+<li>检查 filter policy</li>
+</ul>
+</li>
+<li>
+<p>用 <code>&quot;Destination&quot;: &quot;All&quot;</code> 做测试验证 routing</p>
+</li>
+</ul>
+<p><strong>Result</strong>
+成功定位是 trigger / filter 配置问题，恢复 pipeline 正常运行。</p>
+<hr>
+<h2 id="%F0%9F%8E%AF-%E9%9D%A2%E8%AF%95%E4%B8%80%E5%8F%A5%E8%AF%9D">🎯 面试一句话</h2>
+<blockquote>
+<p>When I didn’t see logs in CloudWatch,
+I traced back the pipeline and identified
+that the Lambda was not triggered due to configuration issues.</p>
+</blockquote>
+<hr>
+<h1 id="%E2%AD%90-story-2%E5%85%88%E6%89%93%E9%80%9A%E6%9E%B6%E6%9E%84senior-%E6%80%9D%E7%BB%B4%F0%9F%94%A5">⭐ Story 2：先打通架构（Senior 思维🔥）</h1>
+<h2 id="%E2%AD%90-star">⭐ STAR</h2>
+<p><strong>Situation</strong>
+需要实现 SNS → SQS → Lambda 的业务处理逻辑。</p>
+<p><strong>Task</strong>
+确保系统稳定并降低调试难度。</p>
+<p><strong>Action</strong></p>
+<ul>
+<li>
+<p>先不写复杂逻辑</p>
+</li>
+<li>
+<p>Lambda 只做 <code>print</code></p>
+</li>
+<li>
+<p>验证 end-to-end flow：</p>
+<ul>
+<li>SNS → SQS → Lambda → CloudWatch</li>
+</ul>
+</li>
+</ul>
+<p><strong>Result</strong>
+快速确认架构正确，后续开发效率提升，debug 成本降低。</p>
+<hr>
+<h2 id="%F0%9F%8E%AF-%E9%9D%A2%E8%AF%95%E4%B8%80%E5%8F%A5%E8%AF%9D">🎯 面试一句话</h2>
+<blockquote>
+<p>I first validated the infrastructure with simple logging before adding business logic to isolate issues efficiently.</p>
+</blockquote>
+<hr>
+<h1 id="%E2%AD%90-story-3%E5%A4%9A%E4%B8%AA-lambda-%E8%A7%A3%E8%80%A6">⭐ Story 3：多个 Lambda 解耦</h1>
+<h2 id="%E2%AD%90-star">⭐ STAR</h2>
+<p><strong>Situation</strong>
+需要处理不同类型的消息（订单、通知等）。</p>
+<p><strong>Task</strong>
+设计一个可扩展、解耦的系统。</p>
+<p><strong>Action</strong></p>
+<ul>
+<li>使用 SNS fan-out</li>
+<li>每个 SQS 绑定一个 Lambda</li>
+<li>每个 Lambda 处理独立业务逻辑</li>
+</ul>
+<p><strong>Result</strong>
+系统具备：</p>
+<ul>
+<li>解耦</li>
+<li>可扩展</li>
+<li>故障隔离</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%8E%AF-%E9%9D%A2%E8%AF%95%E4%B8%80%E5%8F%A5%E8%AF%9D">🎯 面试一句话</h2>
+<blockquote>
+<p>I designed separate Lambda functions for different business logic to improve decoupling and scalability.</p>
+</blockquote>
+<hr>
+<h1 id="%E2%AD%90-story-4filter-%E4%BC%98%E5%8C%96%E6%B6%88%E6%81%AF%E8%B7%AF%E7%94%B1">⭐ Story 4：Filter 优化消息路由</h1>
+<h2 id="%E2%AD%90-star">⭐ STAR</h2>
+<p><strong>Situation</strong>
+所有 queue 收到所有消息，资源浪费。</p>
+<p><strong>Task</strong>
+优化消息分发。</p>
+<p><strong>Action</strong></p>
+<ul>
+<li>使用 SNS filter policy</li>
+<li>按 <code>Destination</code> 字段路由</li>
+</ul>
+<p><strong>Result</strong></p>
+<ul>
+<li>减少无效处理</li>
+<li>提高效率</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%8E%AF-%E9%9D%A2%E8%AF%95%E4%B8%80%E5%8F%A5%E8%AF%9D">🎯 面试一句话</h2>
+<blockquote>
+<p>I used message filtering to ensure each consumer only processes relevant data, reducing unnecessary workload.</p>
+</blockquote>
+<hr>
+<h1 id="%E2%AD%90-story-5cloudwatch-debug-%E6%80%9D%E8%B7%AF">⭐ Story 5：CloudWatch Debug 思路</h1>
+<h2 id="%E2%AD%90-star">⭐ STAR</h2>
+<p><strong>Situation</strong>
+运行后没有看到任何输出。</p>
+<p><strong>Task</strong>
+判断问题是在代码还是系统。</p>
+<p><strong>Action</strong></p>
+<ul>
+<li>
+<p>确认 Lambda log 在 CloudWatch</p>
+</li>
+<li>
+<p>判断：</p>
+<ul>
+<li>有 log → 代码问题</li>
+<li>没 log → trigger / upstream 问题</li>
+</ul>
+</li>
+</ul>
+<p><strong>Result</strong>
+快速区分 infra vs code 问题。</p>
+<hr>
+<h2 id="%F0%9F%8E%AF-%E9%9D%A2%E8%AF%95%E4%B8%80%E5%8F%A5%E8%AF%9D">🎯 面试一句话</h2>
+<blockquote>
+<p>CloudWatch logs helped me determine whether the issue was in the code or in the event pipeline.</p>
+</blockquote>
+<hr>
+<h1 id="%F0%9F%93%9A-%E4%BA%8C%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93%E8%A1%A8%E6%A0%BC%F0%9F%94%A5">📚 二、核心知识点总结（表格🔥）</h1>
+<h2 id="%F0%9F%A7%A0-%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6">🧠 架构组件</h2>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>作用</th>
+<th>面试关键词</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SNS</td>
+<td>消息分发（fan-out）</td>
+<td>Pub/Sub</td>
+</tr>
+<tr>
+<td>SQS</td>
+<td>缓冲 + 解耦</td>
+<td>Queue</td>
+</tr>
+<tr>
+<td>Lambda</td>
+<td>处理逻辑</td>
+<td>Serverless</td>
+</tr>
+<tr>
+<td>CloudWatch</td>
+<td>日志监控</td>
+<td>Observability</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="%F0%9F%A7%A0-%E6%A0%B8%E5%BF%83%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3">🧠 核心设计思想</h2>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>解释</th>
+<th>面试表达</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fan-out</td>
+<td>一条消息多个消费者</td>
+<td>distribute to multiple queues</td>
+</tr>
+<tr>
+<td>Decoupling</td>
+<td>系统解耦</td>
+<td>independent services</td>
+</tr>
+<tr>
+<td>Filtering</td>
+<td>精准路由</td>
+<td>selective delivery</td>
+</tr>
+<tr>
+<td>Fault Isolation</td>
+<td>故障隔离</td>
+<td>failure does not affect others</td>
+</tr>
+<tr>
+<td>Scalability</td>
+<td>可扩展</td>
+<td>scale independently</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="%F0%9F%A7%A0-debug-%E6%80%9D%E8%B7%AF">🧠 Debug 思路</h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>结论</th>
+<th>下一步</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>没有 CloudWatch log</td>
+<td>Lambda 没执行</td>
+<td>查 trigger</td>
+</tr>
+<tr>
+<td>SQS 有消息但没触发</td>
+<td>Lambda 没绑定</td>
+<td>加 trigger</td>
+</tr>
+<tr>
+<td>只有部分 queue 收到</td>
+<td>filter 问题</td>
+<td>查 policy</td>
+</tr>
+<tr>
+<td>都没触发</td>
+<td>SNS publish 问题</td>
+<td>查代码</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="%F0%9F%A7%A0-sdkboto3">🧠 SDK（Boto3）</h2>
+<table>
+<thead>
+<tr>
+<th>点</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>定义</td>
+<td>AWS SDK for Python</td>
+</tr>
+<tr>
+<td>作用</td>
+<td>调 AWS API</td>
+</tr>
+<tr>
+<td>优势</td>
+<td>封装认证 + 请求</td>
+</tr>
+<tr>
+<td>示例</td>
+<td><code>sns.publish()</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="%F0%9F%8E%AF-%E4%B8%89%E6%9C%80%E9%87%8D%E8%A6%81%E6%80%BB%E7%BB%93%E4%BD%A0%E5%BF%85%E9%A1%BB%E4%BC%9A%E8%83%8C%F0%9F%94%A5">🎯 三、最重要总结（你必须会背🔥）</h1>
+<blockquote>
+<p>We built an event-driven architecture using SNS, SQS, and Lambda.
+SNS distributes messages using fan-out,
+SQS provides buffering and decoupling, and Lambda processes messages independently.
+Filtering ensures efficient routing, and CloudWatch helps with debugging and monitoring.</p>
+</blockquote>
+<hr>
+<h1 id="%E2%AD%90-1-star-stories-interview-ready">⭐ 1. STAR Stories (Interview Ready)</h1>
+<h2 id="%F0%9F%93%8A-overview">📊 Overview</h2>
+<table>
+<thead>
+<tr>
+<th>Story</th>
+<th>Scenario</th>
+<th>Core Skill</th>
+<th>Leadership Principle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Story 1</td>
+<td>Lambda not triggered</td>
+<td>Debugging</td>
+<td>Dive Deep</td>
+</tr>
+<tr>
+<td>Story 2</td>
+<td>Validate infra first</td>
+<td>Ownership</td>
+<td>Ownership</td>
+</tr>
+<tr>
+<td>Story 3</td>
+<td>Multiple Lambdas design</td>
+<td>System Design</td>
+<td>Invent &amp; Simplify</td>
+</tr>
+<tr>
+<td>Story 4</td>
+<td>Message filtering optimization</td>
+<td>Efficiency</td>
+<td>Bias for Action</td>
+</tr>
+<tr>
+<td>Story 5</td>
+<td>CloudWatch debugging</td>
+<td>Observability</td>
+<td>Dive Deep</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="%E2%AD%90-story-1--debug-lambda-not-triggered">⭐ Story 1 — Debug: Lambda Not Triggered</h2>
+<p><strong>Situation</strong>
+While building an SNS → SQS → Lambda pipeline, Lambda produced no logs.</p>
+<p><strong>Task</strong>
+Identify why the Lambda function was not triggered.</p>
+<p><strong>Action</strong></p>
+<ul>
+<li>
+<p>Checked CloudWatch → no logs → Lambda not invoked</p>
+</li>
+<li>
+<p>Traced upstream:</p>
+<ul>
+<li>Verified Lambda trigger (SQS)</li>
+<li>Checked SNS subscription</li>
+<li>Validated filter policy</li>
+</ul>
+</li>
+<li>
+<p>Sent test message <code>&quot;Destination&quot;: &quot;All&quot;</code> to isolate routing issues</p>
+</li>
+</ul>
+<p><strong>Result</strong>
+Identified misconfiguration in trigger/filter and restored the pipeline.</p>
+<p><strong>🎯 One-liner</strong></p>
+<blockquote>
+<p>When no logs appeared in CloudWatch,
+I traced back the pipeline and identified a configuration issue preventing Lambda invocation.</p>
+</blockquote>
+<hr>
+<h2 id="%E2%AD%90-story-2--validate-infrastructure-first-senior-thinking">⭐ Story 2 — Validate Infrastructure First (Senior Thinking)</h2>
+<p><strong>Situation</strong>
+Needed to implement business logic on top of an event-driven pipeline.</p>
+<p><strong>Task</strong>
+Ensure system stability and reduce debugging complexity.</p>
+<p><strong>Action</strong></p>
+<ul>
+<li>First implemented simple logging (<code>print</code>) in Lambda</li>
+<li>Verified full flow:
+SNS → SQS → Lambda → CloudWatch</li>
+<li>Only then added business logic</li>
+</ul>
+<p><strong>Result</strong>
+Reduced debugging scope and improved development efficiency.</p>
+<p><strong>🎯 One-liner</strong></p>
+<blockquote>
+<p>I validated the end-to-end pipeline with simple logging before adding business logic to isolate issues early.</p>
+</blockquote>
+<hr>
+<h2 id="%E2%AD%90-story-3--multiple-lambdas-for-decoupling">⭐ Story 3 — Multiple Lambdas for Decoupling</h2>
+<p><strong>Situation</strong>
+System needed to handle different types of messages.</p>
+<p><strong>Task</strong>
+Design a scalable and decoupled architecture.</p>
+<p><strong>Action</strong></p>
+<ul>
+<li>Used SNS fan-out</li>
+<li>Created multiple SQS queues</li>
+<li>Assigned one Lambda per queue (one responsibility per service)</li>
+</ul>
+<p><strong>Result</strong>
+Achieved:</p>
+<ul>
+<li>Decoupling</li>
+<li>Independent scaling</li>
+<li>Fault isolation</li>
+</ul>
+<p><strong>🎯 One-liner</strong></p>
+<blockquote>
+<p>I separated business logic into multiple Lambda functions to improve decoupling and scalability.</p>
+</blockquote>
+<hr>
+<h2 id="%E2%AD%90-story-4--filtering-optimization">⭐ Story 4 — Filtering Optimization</h2>
+<p><strong>Situation</strong>
+All consumers were receiving all messages, causing inefficiency.</p>
+<p><strong>Task</strong>
+Optimize message routing.</p>
+<p><strong>Action</strong></p>
+<ul>
+<li>Implemented SNS filter policies</li>
+<li>Routed messages based on <code>&quot;Destination&quot;</code> field</li>
+</ul>
+<p><strong>Result</strong></p>
+<ul>
+<li>Reduced unnecessary processing</li>
+<li>Improved efficiency</li>
+</ul>
+<p><strong>🎯 One-liner</strong></p>
+<blockquote>
+<p>I used message filtering to ensure each consumer only receives relevant data.</p>
+</blockquote>
+<hr>
+<h2 id="%E2%AD%90-story-5--cloudwatch-debug-strategy">⭐ Story 5 — CloudWatch Debug Strategy</h2>
+<p><strong>Situation</strong>
+System ran without visible output.</p>
+<p><strong>Task</strong>
+Determine whether the issue was in code or infrastructure.</p>
+<p><strong>Action</strong></p>
+<ul>
+<li>Checked CloudWatch logs</li>
+<li>Used absence of logs to infer Lambda not triggered</li>
+<li>Traced upstream components</li>
+</ul>
+<p><strong>Result</strong>
+Quickly distinguished between infra vs code issues.</p>
+<p><strong>🎯 One-liner</strong></p>
+<blockquote>
+<p>CloudWatch logs helped me determine whether the issue was in the code or the event pipeline.</p>
+</blockquote>
+<hr>
+<h1 id="%F0%9F%93%9A-2-core-knowledge-tables">📚 2. Core Knowledge (Tables)</h1>
+<hr>
+<h2 id="%F0%9F%A7%A0-architecture-components">🧠 Architecture Components</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Role</th>
+<th>Keywords</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SNS</td>
+<td>Message distribution</td>
+<td>Pub/Sub, Fan-out</td>
+</tr>
+<tr>
+<td>SQS</td>
+<td>Buffer + decouple</td>
+<td>Queue</td>
+</tr>
+<tr>
+<td>Lambda</td>
+<td>Process logic</td>
+<td>Serverless</td>
+</tr>
+<tr>
+<td>CloudWatch</td>
+<td>Logging &amp; monitoring</td>
+<td>Observability</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="%F0%9F%A7%A0-key-design-concepts">🧠 Key Design Concepts</h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Meaning</th>
+<th>Interview Phrase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fan-out</td>
+<td>One message → multiple consumers</td>
+<td>distribute to multiple queues</td>
+</tr>
+<tr>
+<td>Decoupling</td>
+<td>Services independent</td>
+<td>loosely coupled</td>
+</tr>
+<tr>
+<td>Filtering</td>
+<td>Route selectively</td>
+<td>selective delivery</td>
+</tr>
+<tr>
+<td>Fault Isolation</td>
+<td>Failure containment</td>
+<td>isolate failures</td>
+</tr>
+<tr>
+<td>Scalability</td>
+<td>Independent scaling</td>
+<td>scale independently</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="%F0%9F%A7%A0-debug-strategy">🧠 Debug Strategy</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Insight</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No CloudWatch logs</td>
+<td>Lambda not invoked</td>
+<td>Check trigger</td>
+</tr>
+<tr>
+<td>SQS has messages but no Lambda</td>
+<td>Missing trigger</td>
+<td>Add trigger</td>
+</tr>
+<tr>
+<td>Only some queues triggered</td>
+<td>Filter issue</td>
+<td>Check policy</td>
+</tr>
+<tr>
+<td>Nothing triggered</td>
+<td>Upstream issue</td>
+<td>Check SNS publish</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="%F0%9F%A7%A0-sdk-boto3">🧠 SDK (Boto3)</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Definition</td>
+<td>AWS SDK for Python</td>
+</tr>
+<tr>
+<td>Purpose</td>
+<td>Interact with AWS services</td>
+</tr>
+<tr>
+<td>Advantage</td>
+<td>Handles auth + API calls</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><code>sns.publish()</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="%F0%9F%8E%AF-3-final-interview-summary-must-memorize">🎯 3. Final Interview Summary (Must Memorize)</h1>
+<blockquote>
+<p>We built an event-driven architecture using SNS, SQS, and Lambda.
+SNS distributes messages using fan-out, SQS provides buffering and decoupling,
+and Lambda processes messages independently. Filtering ensures efficient routing,
+and CloudWatch enables monitoring and debugging.</p>
+</blockquote>
+<hr>
+<h1 id="%F0%9F%9A%80-30-second-version">🚀 30-Second Version</h1>
+<blockquote>
+<p>We designed an event-driven system where SNS distributes messages to SQS queues using filtering,
+and each queue independently triggers a Lambda function for processing.
+This improves decoupling, scalability, and fault isolation.</p>
+</blockquote>
+<h1 id="%E2%AD%90-1-%E9%AB%98%E9%A2%91-follow-up-questions%E5%BF%85%E9%97%AE">⭐ 1. 高频 Follow-up Questions（必问）</h1>
+<h2 id="%E2%9D%93-q1-why-not-trigger-lambda-directly-from-sns">❓ Q1: Why not trigger Lambda directly from SNS?</h2>
+<h3 id="%E2%9C%85-answer">✅ Answer</h3>
+<blockquote>
+<p>SNS can trigger Lambda directly, but using SQS in between provides buffering,
+retry capability, and decoupling. This prevents Lambda from being overwhelmed during traffic spikes.</p>
+</blockquote>
+<p>👉 关键词：</p>
+<ul>
+<li>buffering</li>
+<li>decoupling</li>
+<li>reliability</li>
+</ul>
+<hr>
+<h2 id="%E2%9D%93-q2-what-happens-if-lambda-fails">❓ Q2: What happens if Lambda fails?</h2>
+<h3 id="%E2%9C%85-answer">✅ Answer</h3>
+<blockquote>
+<p>SQS retains the message and retries processing.
+We can also configure a Dead Letter Queue (DLQ) to capture failed messages after multiple retries.</p>
+</blockquote>
+<p>👉 关键词：</p>
+<ul>
+<li>retry</li>
+<li>DLQ</li>
+<li>fault tolerance</li>
+</ul>
+<hr>
+<h2 id="%E2%9D%93-q3-why-use-multiple-sqs-queues-instead-of-one">❓ Q3: Why use multiple SQS queues instead of one?</h2>
+<h3 id="%E2%9C%85-answer">✅ Answer</h3>
+<blockquote>
+<p>Multiple queues allow independent processing, better isolation,
+and different scaling strategies for each workload.</p>
+</blockquote>
+<p>👉 关键词：</p>
+<ul>
+<li>isolation</li>
+<li>scalability</li>
+<li>separation of concerns</li>
+</ul>
+<hr>
+<h2 id="%E2%9D%93-q4-how-does-filtering-work-in-sns">❓ Q4: How does filtering work in SNS?</h2>
+<h3 id="%E2%9C%85-answer">✅ Answer</h3>
+<blockquote>
+<p>SNS filtering allows messages to be routed to specific subscribers based on message attributes or message body,
+ensuring that each consumer only receives relevant messages.</p>
+</blockquote>
+<p>👉 关键词：</p>
+<ul>
+<li>selective delivery</li>
+<li>efficiency</li>
+</ul>
+<hr>
+<h2 id="%E2%9D%93-q5-how-would-you-debug-if-no-lambda-logs-appear">❓ Q5: How would you debug if no Lambda logs appear?</h2>
+<h3 id="%E2%9C%85-answer">✅ Answer</h3>
+<blockquote>
+<p>If no logs appear in CloudWatch, it means Lambda was not invoked.
+I would trace upstream: check SQS triggers, SNS subscriptions, and message filtering.</p>
+</blockquote>
+<p>👉 关键词：</p>
+<ul>
+<li>trace upstream</li>
+<li>CloudWatch</li>
+</ul>
+<hr>
+<h2 id="%E2%9D%93-q6-how-do-you-handle-high-traffic">❓ Q6: How do you handle high traffic?</h2>
+<h3 id="%E2%9C%85-answer">✅ Answer</h3>
+<blockquote>
+<p>SQS automatically scales to handle large volumes,
+and Lambda can scale horizontally. We can also control concurrency and batch size.</p>
+</blockquote>
+<p>👉 关键词：</p>
+<ul>
+<li>horizontal scaling</li>
+<li>concurrency</li>
+<li>batching</li>
+</ul>
+<hr>
+<h2 id="%E2%9D%93-q7-what-is-the-benefit-of-event-driven-architecture">❓ Q7: What is the benefit of event-driven architecture?</h2>
+<h3 id="%E2%9C%85-answer">✅ Answer</h3>
+<blockquote>
+<p>It improves decoupling, scalability,
+and allows asynchronous processing, making the system more flexible and resilient.</p>
+</blockquote>
+<p>👉 关键词：</p>
+<ul>
+<li>async</li>
+<li>decoupling</li>
+<li>scalability</li>
+</ul>
+<hr>
+<h2 id="%E2%9D%93-q8-what-if-message-order-matters">❓ Q8: What if message order matters?</h2>
+<h3 id="%E2%9C%85-answer">✅ Answer</h3>
+<blockquote>
+<p>We would use FIFO SQS queues to guarantee ordering and exactly-once processing.</p>
+</blockquote>
+<p>👉 关键词：</p>
+<ul>
+<li>FIFO</li>
+<li>ordering</li>
+</ul>
+<hr>
+<h1 id="%F0%9F%93%8A-2-sns-vs-sqs-vs-kafka-vs-eventbridge%E9%AB%98%E9%A2%91%E5%AF%B9%E6%AF%94%F0%9F%94%A5">📊 2. SNS vs SQS vs Kafka vs EventBridge（高频对比🔥）</h1>
+<h2 id="%F0%9F%A7%A0-%E6%80%BB%E8%A1%A8">🧠 总表</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>SNS</th>
+<th>SQS</th>
+<th>Kafka</th>
+<th>EventBridge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Pub/Sub</td>
+<td>Queue</td>
+<td>Streaming</td>
+<td>Event Bus</td>
+</tr>
+<tr>
+<td>Fan-out</td>
+<td>✅</td>
+<td>❌</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Ordering</td>
+<td>❌</td>
+<td>FIFO only</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Retention</td>
+<td>❌</td>
+<td>Yes</td>
+<td>Long</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>Replay</td>
+<td>❌</td>
+<td>Limited</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Throughput</td>
+<td>Medium</td>
+<td>High</td>
+<td>Very High</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Use Case</td>
+<td>Broadcast</td>
+<td>Buffer</td>
+<td>Real-time stream</td>
+<td>Event routing</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="%F0%9F%A7%A0-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E7%94%A8%E4%BB%80%E4%B9%88">🧠 什么时候用什么？</h2>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>广播消息</td>
+<td>SNS</td>
+</tr>
+<tr>
+<td>解耦 / 缓冲</td>
+<td>SQS</td>
+</tr>
+<tr>
+<td>实时流（大数据）</td>
+<td>Kafka</td>
+</tr>
+<tr>
+<td>AWS服务集成</td>
+<td>EventBridge</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="%F0%9F%8E%AF-3-%E9%9D%A2%E8%AF%95%E6%A0%B8%E5%BF%83%E5%AF%B9%E6%AF%94%E4%BD%A0%E8%A6%81%E4%BC%9A%E8%AF%B4">🎯 3. 面试核心对比（你要会说）</h1>
+<h2 id="%F0%9F%94%B9-sns-vs-sqs">🔹 SNS vs SQS</h2>
+<blockquote>
+<p>SNS is used for message distribution (fan-out), while SQS is used for buffering and decoupling.</p>
+</blockquote>
+<hr>
+<h2 id="%F0%9F%94%B9-sns--sqs-together">🔹 SNS + SQS together</h2>
+<blockquote>
+<p>SNS distributes messages, and SQS ensures reliable delivery and buffering before processing.</p>
+</blockquote>
+<hr>
+<h2 id="%F0%9F%94%B9-kafka-vs-snssqs">🔹 Kafka vs SNS/SQS</h2>
+<blockquote>
+<p>Kafka is designed for high-throughput streaming and message replay,
+while SNS/SQS are simpler managed services for event-driven workflows.</p>
+</blockquote>
+<hr>
+<h2 id="%F0%9F%94%B9-eventbridge-vs-sns">🔹 EventBridge vs SNS</h2>
+<blockquote>
+<p>EventBridge provides more advanced event routing with rules and integrates deeply with AWS services.</p>
+</blockquote>
+<hr>
+<h1 id="%F0%9F%9A%80-4-%E9%AB%98%E7%BA%A7%E5%8A%A0%E5%88%86%E7%82%B9%E9%9D%A2%E8%AF%95%E6%8B%89%E5%BC%80%E5%B7%AE%E8%B7%9D%F0%9F%94%A5">🚀 4. 高级加分点（面试拉开差距🔥）</h1>
+<h2 id="%E2%AD%90-exactly-once-vs-at-least-once">⭐ Exactly-once vs At-least-once</h2>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Guarantee</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SQS Standard</td>
+<td>At-least-once</td>
+</tr>
+<tr>
+<td>SQS FIFO</td>
+<td>Exactly-once</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="%E2%AD%90-batch-processing">⭐ Batch Processing</h2>
+<blockquote>
+<p>Lambda can process multiple SQS messages in batches to improve efficiency.</p>
+</blockquote>
+<hr>
+<h2 id="%E2%AD%90-dlq%E5%BF%85%E9%A1%BB%E4%BC%9A">⭐ DLQ（必须会）</h2>
+<blockquote>
+<p>Failed messages can be sent to a Dead Letter Queue for later analysis.</p>
+</blockquote>
+<hr>
+<h2 id="%E2%AD%90-visibility-timeout">⭐ Visibility Timeout</h2>
+<blockquote>
+<p>Prevents multiple consumers from processing the same message simultaneously.</p>
+</blockquote>
+<hr>
+<h1 id="%F0%9F%8E%AF-5-%E6%9C%80%E7%BB%88%E8%B6%85%E7%BA%A7%E6%80%BB%E7%BB%93%E5%BF%85%E8%83%8C%F0%9F%94%A5">🎯 5. 最终超级总结（必背🔥）</h1>
+<blockquote>
+<p>SNS handles message fan-out,
+SQS provides buffering and reliability, and Lambda processes messages asynchronously.
+Compared to Kafka, this solution is simpler and fully managed,
+while Kafka is better suited for high-throughput streaming and replay scenarios.</p>
+</blockquote>
+<hr>
+<h1 id="%F0%9F%93%8C-aws-sns--sqs--lambda-%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93star">📌 AWS SNS + SQS + Lambda 项目总结（STAR）</h1>
+<hr>
+<h1 id="%E2%AD%90-star-story-1--end-to-end-system">⭐ STAR Story 1 — End-to-End System</h1>
+<h2 id="situation">Situation</h2>
+<p>We built an event-driven AWS system to process messages asynchronously using SNS, SQS, and Lambda.</p>
+<h2 id="task">Task</h2>
+<p>Design a pipeline:</p>
+<pre class="hljs"><code><div>Producer → SNS → SQS → Lambda → CloudWatch
+</div></code></pre>
+<p>with:</p>
+<ul>
+<li>fan-out</li>
+<li>filtering</li>
+<li>independent processing</li>
+<li>debuggability</li>
+</ul>
+<hr>
+<h2 id="action">Action</h2>
+<h3 id="1-create-sns-topic">1. Create SNS Topic</h3>
+<ul>
+<li>Acts as message distribution hub</li>
+<li>Supports fan-out</li>
+</ul>
+<hr>
+<h3 id="2-create-sqs-queues">2. Create SQS Queues</h3>
+<ul>
+<li><code>CL_Queue_1</code></li>
+<li><code>CL_Queue_2</code></li>
+</ul>
+<p><strong>Purpose:</strong></p>
+<ul>
+<li>Buffering</li>
+<li>Decoupling</li>
+<li>Retry</li>
+</ul>
+<hr>
+<h3 id="3-configure-access-policy">3. Configure Access Policy</h3>
+<p>Allow SNS → SQS communication:</p>
+<ul>
+<li><code>Resource</code> = SQS ARN</li>
+<li><code>SourceArn</code> = SNS ARN</li>
+</ul>
+<hr>
+<h3 id="4-subscribe-sqs-to-sns">4. Subscribe SQS to SNS</h3>
+<ul>
+<li>Protocol: SQS</li>
+<li>Endpoint: Queue</li>
+</ul>
+<hr>
+<h3 id="5-configure-filtering">5. Configure Filtering</h3>
+<pre class="hljs"><code><div>Q1:
+{
+  <span class="hljs-attr">"Destination"</span>: [<span class="hljs-string">"CL_Queue_1"</span>, <span class="hljs-string">"All"</span>]
+}
+
+Q2:
+{
+  <span class="hljs-attr">"Destination"</span>: [<span class="hljs-string">"CL_Queue_2"</span>, <span class="hljs-string">"All"</span>]
+}
+</div></code></pre>
+<p>👉 Message body filtering</p>
+<hr>
+<h3 id="6-create-lambda-functions">6. Create Lambda Functions</h3>
+<ul>
+<li><code>CL_Lambda_Function_1</code></li>
+<li><code>CL_Lambda_Function_2</code></li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">lambda_handler</span><span class="hljs-params">(event, context)</span>:</span>
+    <span class="hljs-keyword">for</span> message <span class="hljs-keyword">in</span> event[<span class="hljs-string">'Records'</span>]:
+        print(message[<span class="hljs-string">"body"</span>])
+</div></code></pre>
+<p>👉 First validate pipeline, not business logic</p>
+<hr>
+<h3 id="7-add-sqs-as-trigger">7. Add SQS as Trigger</h3>
+<ul>
+<li>Q1 → Lambda1</li>
+<li>Q2 → Lambda2</li>
+</ul>
+<p>👉 Critical step</p>
+<hr>
+<h3 id="8-publish-message-boto3">8. Publish Message (Boto3)</h3>
+<pre class="hljs"><code><div>sns.publish(...)
+</div></code></pre>
+<hr>
+<h2 id="result">Result</h2>
+<p>We built:</p>
+<pre class="hljs"><code><div>Boto3 → SNS → SQS → Lambda → CloudWatch
+</div></code></pre>
+<p>Learned:</p>
+<ul>
+<li>Fan-out (SNS)</li>
+<li>Decoupling (SQS)</li>
+<li>Event-driven processing (Lambda)</li>
+<li>Filtering</li>
+<li>Debugging via CloudWatch</li>
+</ul>
+<hr>
+<h1 id="%E2%AD%90-star-story-2--validate-infra-first">⭐ STAR Story 2 — Validate Infra First</h1>
+<h2 id="situation">Situation</h2>
+<p>Complex logic makes debugging difficult.</p>
+<h2 id="task">Task</h2>
+<p>Ensure system works before adding logic.</p>
+<h2 id="action">Action</h2>
+<pre class="hljs"><code><div>1. Build infra
+2. Add simple logging (print)
+3. Validate end-to-end flow
+4. Then add business logic
+</div></code></pre>
+<hr>
+<h2 id="result">Result</h2>
+<ul>
+<li>Faster debugging</li>
+<li>Clear separation: infra vs logic</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%8E%AF-one-liner">🎯 One-liner</h2>
+<blockquote>
+<p>I validate the infrastructure first with simple logging before adding business logic.</p>
+</blockquote>
+<hr>
+<h1 id="%E2%AD%90-star-story-3--core-concepts-explanation">⭐ STAR Story 3 — Core Concepts Explanation</h1>
+<h2 id="key-concepts">Key Concepts</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SDK (Boto3)</td>
+<td>API wrapper for AWS</td>
+</tr>
+<tr>
+<td>SNS</td>
+<td>Pub/Sub, fan-out</td>
+</tr>
+<tr>
+<td>SQS</td>
+<td>Buffer + decouple</td>
+</tr>
+<tr>
+<td>Lambda</td>
+<td>Serverless compute</td>
+</tr>
+<tr>
+<td>Trigger</td>
+<td>Auto-invocation</td>
+</tr>
+<tr>
+<td>Filtering</td>
+<td>Selective routing</td>
+</tr>
+<tr>
+<td>CloudWatch</td>
+<td>Logging</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="%F0%9F%8E%AF-key-insight">🎯 Key Insight</h2>
+<blockquote>
+<p>Each component plays a role in the pipeline, not just a standalone service.</p>
+</blockquote>
+<hr>
+<h1 id="%E2%AD%90-star-story-4--debugging-process-most-important%F0%9F%94%A5">⭐ STAR Story 4 — Debugging Process (MOST IMPORTANT🔥)</h1>
+<h2 id="situation">Situation</h2>
+<p>Lambda2 had no output.</p>
+<hr>
+<h2 id="task">Task</h2>
+<p>Identify failure point in pipeline.</p>
+<hr>
+<h2 id="action">Action</h2>
+<h3 id="step-1-start-from-result">Step 1: Start from result</h3>
+<pre class="hljs"><code><div>No CloudWatch logs
+→ Lambda not invoked
+</div></code></pre>
+<hr>
+<h3 id="step-2-verify-code">Step 2: Verify code</h3>
+<ul>
+<li>Fix wrong print label</li>
+<li>Ensure code is saved</li>
+<li>Ensure Run executed</li>
+</ul>
+<hr>
+<h3 id="step-3-check-logs-location">Step 3: Check logs location</h3>
+<p>👉 Logs are in CloudWatch, not Lambda UI</p>
+<hr>
+<h3 id="step-4-check-correct-log-group">Step 4: Check correct log group</h3>
+<p>❌ Wrong:</p>
+<pre class="hljs"><code><div>/aws/lambda/CloudTrailEventLogger
+</div></code></pre>
+<p>✅ Correct:</p>
+<pre class="hljs"><code><div>/aws/lambda/CL_Lambda_Function_2
+</div></code></pre>
+<hr>
+<h3 id="step-5-key-insight">Step 5: Key insight</h3>
+<pre class="hljs"><code><div>No log group = Lambda never executed
+</div></code></pre>
+<hr>
+<h3 id="step-6-check-trigger">Step 6: Check trigger</h3>
+<ul>
+<li>Lambda must be connected to SQS</li>
+</ul>
+<hr>
+<h3 id="step-7-check-sns-%E2%86%92-sqs">Step 7: Check SNS → SQS</h3>
+<ul>
+<li>Subscription exists</li>
+<li>Status active</li>
+</ul>
+<hr>
+<h3 id="step-8-check-filtering">Step 8: Check filtering</h3>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"Destination"</span>: [<span class="hljs-string">"CL_Queue_2"</span>, <span class="hljs-string">"All"</span>]
+}
+</div></code></pre>
+<hr>
+<h3 id="step-9-minimal-test">Step 9: Minimal test</h3>
+<pre class="hljs"><code><div>{<span class="hljs-attr">"Destination"</span>: <span class="hljs-string">"All"</span>}
+</div></code></pre>
+<p>👉 Both Lambdas should trigger</p>
+<hr>
+<h2 id="result">Result</h2>
+<p>Established debugging method:</p>
+<pre class="hljs"><code><div>No logs
+→ Lambda not invoked
+→ Check trigger
+→ Check subscription
+→ Check filtering
+→ Check message format
+→ Check log group
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%8E%AF-one-liner">🎯 One-liner</h2>
+<blockquote>
+<p>I debugged the system by tracing the pipeline backward from missing logs.</p>
+</blockquote>
+<hr>
+<h1 id="%E2%AD%90-star-story-5--why-filtering">⭐ STAR Story 5 — Why Filtering</h1>
+<h2 id="situation">Situation</h2>
+<p>Without filtering, all consumers receive all messages.</p>
+<hr>
+<h2 id="task">Task</h2>
+<p>Reduce unnecessary processing.</p>
+<hr>
+<h2 id="action">Action</h2>
+<p>Use filter policy:</p>
+<pre class="hljs"><code><div>CL_Queue_1 → Q1
+CL_Queue_2 → Q2
+All → both
+</div></code></pre>
+<hr>
+<h2 id="result">Result</h2>
+<ul>
+<li>Reduced workload</li>
+<li>Cleaner architecture</li>
+<li>Better scalability</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%8E%AF-one-liner">🎯 One-liner</h2>
+<blockquote>
+<p>Filtering ensures each consumer only processes relevant messages.</p>
+</blockquote>
+<hr>
+<h1 id="%E2%AD%90-star-story-6--engineering-skills">⭐ STAR Story 6 — Engineering Skills</h1>
+<h2 id="key-learnings">Key Learnings</h2>
+<ul>
+<li>Event-driven architecture</li>
+<li>Debugging distributed systems</li>
+<li>Decoupled design</li>
+<li>Layered troubleshooting</li>
+<li>Senior engineering mindset</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%8E%AF-one-liner">🎯 One-liner</h2>
+<blockquote>
+<p>This project helped me develop a systematic debugging approach and a strong understanding of event-driven architecture.</p>
+</blockquote>
+<hr>
+<h1 id="%F0%9F%9A%80-final-master-answer-interview%F0%9F%94%A5">🚀 FINAL MASTER ANSWER (INTERVIEW🔥)</h1>
+<blockquote>
+<p>We built an event-driven system using SNS, SQS, and Lambda.
+SNS distributes messages using fan-out, SQS provides buffering and decoupling,
+and Lambda processes messages independently. We used filtering for selective routing and CloudWatch for debugging.
+When issues occurred, we traced the pipeline backward from missing logs to identify the root cause.</p>
+</blockquote>
+<hr>
+<h1 id="%F0%9F%94%A5-30-second-version">🔥 30-Second Version</h1>
+<blockquote>
+<p>We designed an event-driven pipeline using SNS, SQS, and Lambda,
+where messages are distributed using fan-out and filtering, processed asynchronously, and debugged through CloudWatch.</p>
+</blockquote>
+<h1 id="%F0%9F%A7%A0-dive-deep-%E2%80%93-complex-issue-star-story-interview-ready-%F0%9F%94%A5">🧠 Dive Deep – Complex Issue STAR Story (Interview Ready 🔥)</h1>
+<h2 id="%E2%AD%90-situation">⭐ Situation</h2>
+<p>During an internship, I worked on an AWS-based event-driven pipeline using SNS, SQS, and Lambda.<br>
+Under production-like load, we noticed <strong>intermittent message loss</strong>—some messages were successfully published
+but never processed by downstream Lambda functions.</p>
+<hr>
+<h2 id="%E2%AD%90-task">⭐ Task</h2>
+<p>I was responsible for identifying the root cause of the message loss
+and ensuring <strong>reliable, end-to-end delivery</strong> in the pipeline.</p>
+<hr>
+<h2 id="%E2%AD%90-action">⭐ Action</h2>
+<p>I approached the issue systematically and dove deep into the system:</p>
+<ul>
+<li>
+<p><strong>Step 1: Validate symptom</strong></p>
+<ul>
+<li>Compared SNS publish count vs Lambda invocation count</li>
+<li>Confirmed mismatch → real message loss</li>
+</ul>
+</li>
+<li>
+<p><strong>Step 2: Break down pipeline</strong></p>
+<ul>
+<li>SNS → SQS → Lambda</li>
+<li>Checked each stage independently</li>
+</ul>
+</li>
+<li>
+<p><strong>Step 3: Investigate SQS</strong></p>
+<ul>
+<li>Monitored queue metrics (ApproximateNumberOfMessages)</li>
+<li>Found messages were entering SQS but not always consumed</li>
+</ul>
+</li>
+<li>
+<p><strong>Step 4: Analyze Lambda triggers</strong></p>
+<ul>
+<li>Checked batch size, visibility timeout, and concurrency</li>
+<li>Discovered visibility timeout &lt; processing time → messages reappeared</li>
+</ul>
+</li>
+<li>
+<p><strong>Step 5: Inspect error handling</strong></p>
+<ul>
+<li>Found some messages failed silently without retry tracking</li>
+<li>No DLQ (Dead Letter Queue) configured</li>
+</ul>
+</li>
+<li>
+<p><strong>Step 6: Fix design</strong></p>
+<ul>
+<li>Increased visibility timeout</li>
+<li>Added DLQ for failed messages</li>
+<li>Enabled CloudWatch alarms for failure metrics</li>
+<li>Improved logging for each processing step</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="%E2%AD%90-result">⭐ Result</h2>
+<ul>
+<li>Eliminated message loss (100% delivery observed in testing)</li>
+<li>Improved system reliability and observability</li>
+<li>Reduced debugging time for future issues by adding DLQ and metrics</li>
+</ul>
+<hr>
+<h1 id="%F0%9F%8E%AF-one-line-summary">🎯 One-Line Summary</h1>
+<blockquote>
+<p>I identified message loss by comparing system metrics, traced the pipeline stage by stage,
+and fixed visibility timeout and error handling issues to ensure reliable message processing.</p>
+</blockquote>
+<hr>
+<h1 id="%F0%9F%A7%A0-10-follow-up-questions--reference-answers-amazon-style-%F0%9F%94%A5">🧠 10 Follow-up Questions + Reference Answers (Amazon Style 🔥)</h1>
+<h2 id="1-how-did-you-confirm-the-issue-was-real">1. How did you confirm the issue was real?</h2>
+<p><strong>Answer:</strong><br>
+I compared SNS publish metrics with Lambda invocation metrics in CloudWatch
+and found a consistent mismatch, confirming message loss.</p>
+<hr>
+<h2 id="2-why-did-you-check-metrics-first">2. Why did you check metrics first?</h2>
+<p><strong>Answer:</strong><br>
+Metrics give objective evidence and help validate whether the issue is real before diving into assumptions.</p>
+<hr>
+<h2 id="3-how-did-you-isolate-the-problem">3. How did you isolate the problem?</h2>
+<p><strong>Answer:</strong><br>
+I broke the pipeline into stages (SNS → SQS → Lambda)
+and verified each stage independently to identify where messages were lost.</p>
+<hr>
+<h2 id="4-what-was-the-root-cause">4. What was the root cause?</h2>
+<p><strong>Answer:</strong><br>
+The visibility timeout was shorter than the Lambda processing time,
+causing messages to reappear and sometimes be dropped or duplicated.</p>
+<hr>
+<h2 id="5-why-didnt-you-catch-this-earlier">5. Why didn’t you catch this earlier?</h2>
+<p><strong>Answer:</strong><br>
+Initial testing used low load and short processing times,
+which didn’t expose the timing issue under real conditions.</p>
+<hr>
+<h2 id="6-how-did-you-fix-the-issue">6. How did you fix the issue?</h2>
+<p><strong>Answer:</strong><br>
+I increased the visibility timeout, added a Dead Letter Queue, and improved logging and monitoring.</p>
+<hr>
+<h2 id="7-what-trade-offs-did-you-consider">7. What trade-offs did you consider?</h2>
+<p><strong>Answer:</strong><br>
+A longer visibility timeout reduces duplicate processing but increases retry delay,
+so I balanced it based on average processing time.</p>
+<hr>
+<h2 id="8-how-did-you-validate-your-fix">8. How did you validate your fix?</h2>
+<p><strong>Answer:</strong><br>
+I re-ran load tests and verified that SNS publish count matched Lambda invocation count, with no message loss.</p>
+<hr>
+<h2 id="9-what-did-you-learn-from-this-experience">9. What did you learn from this experience?</h2>
+<p><strong>Answer:</strong><br>
+I learned the importance of understanding system-level timing and using metrics to guide debugging instead of guessing.</p>
+<hr>
+<h2 id="10-how-would-you-prevent-this-in-the-future">10. How would you prevent this in the future?</h2>
+<p><strong>Answer:</strong><br>
+I would add monitoring dashboards, alarms, DLQs by default,
+and test under production-like load earlier in development.</p>
+<hr>
+<h1 id="%F0%9F%A7%A0-interview-tip">🧠 Interview Tip</h1>
+<p>👉 强调这三点就赢了：</p>
+<ul>
+<li>Data-driven debugging（用指标说话）</li>
+<li>System decomposition（拆系统）</li>
+<li>Root cause + prevention（不仅修，还防）</li>
+</ul>
+
+</body>
+</html>
