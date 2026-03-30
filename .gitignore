@@ -17,3 +17,15 @@ __pycache__/
 *.tgz
 spark-*
 data/input/mini.json
+
+# 忽略数据
+data/
+
+# 忽略数据文件
+*.json
+*.csv
+*.parquet
+
+# 忽略IDE文件
+.idea/
+
