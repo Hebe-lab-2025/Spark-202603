@@ -1,0 +1,14 @@
+Hello AWS CDK!
+
+This is a test file uploaded to S3.
+
+If everything is configured correctly:
+- S3 upload will trigger Lambda
+- Lambda will print logs
+- Logs will appear in CloudWatch
+
+Timestamp: 2026-03-31
+User: test
+
+Event: S3 ObjectCreated
+Status: Testing Lambda trigger
