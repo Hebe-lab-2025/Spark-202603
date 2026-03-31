@@ -17,7 +17,7 @@
 ## ✅ Step 1：备份代码（非常重要）
 
 ```bash
-cp -r PySpark PySpark_backup
+cp -r Spark-202603 PySpark_backup
 ```
 
 ---
@@ -25,7 +25,7 @@ cp -r PySpark PySpark_backup
 ## ✅ Step 2：删除 Git 历史
 
 ```bash
-cd PySpark
+cd Spark-202603
 rm -rf .git
 ```
 
