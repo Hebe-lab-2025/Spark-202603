@@ -1,14 +1,64 @@
-# Welcome to your CDK TypeScript project
+# AWS CDK S3 + Lambda Demo
 
-This is a blank project for CDK development with TypeScript.
+This is a small event-driven AWS project built with AWS CDK.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## What it does
 
-## Useful commands
+When a file is uploaded to S3, it automatically triggers a Lambda function.
+The Lambda function writes logs to CloudWatch.
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `npx cdk deploy`  deploy this stack to your default AWS account/region
-* `npx cdk diff`    compare deployed stack with current state
-* `npx cdk synth`   emits the synthesized CloudFormation template
+## Architecture
+
+User uploads file  
+↓  
+S3 bucket  
+↓  
+ObjectCreated event  
+↓  
+Lambda function  
+↓  
+CloudWatch logs
+
+## Project structure
+
+small-cdk-s3/
+├── infra/
+│   ├── lib/
+│   │   └── infra-stack.ts
+│   ├── bin/
+│   ├── cdk.json
+│   ├── package.json
+│   └── ...
+├── lambda/
+│   └── index.py
+└── README.md
+
+## Files
+
+### infra/lib/infra-stack.ts
+Defines:
+- S3 bucket
+- Lambda function
+- S3 event notification
+- CloudFormation outputs
+
+### lambda/index.py
+Simple Lambda handler that:
+- prints a success message
+- prints the incoming event
+- returns statusCode 200
+
+## Prerequisites
+
+Make sure you have:
+- Node.js 20+
+- npm
+- AWS CLI
+- AWS CDK
+- Python 3
+
+## Setup
+
+### 1. Configure AWS
+```bash
+aws configure
