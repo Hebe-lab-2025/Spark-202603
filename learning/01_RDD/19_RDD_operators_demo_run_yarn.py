@@ -4,8 +4,11 @@ from pyspark import SparkConf, SparkContext
 from defs_19 import city_with_category
 import json
 import os
-os.environ['HADOOP_CONF_DIR'] = "/export/server/hadoop/etc/hadoop"
+import time
+time.sleep(300)
 
+os.environ['HADOOP_CONF_DIR'] = "/opt/homebrew/Cellar/hadoop/3.4.3/libexec/etc/hadoop"
+# os.environ['HADOOP_CONF_DIR'] = "/export/server/hadoop/etc/hadoop"
 if __name__ == '__main__':
     # 提交 到yarn集群, master 设置为yarn
     conf = SparkConf().setAppName("test-yarn-1").setMaster("yarn")
@@ -17,8 +20,10 @@ if __name__ == '__main__':
     sc = SparkContext(conf=conf)
 
     # 在集群中运行, 我们需要用HDFS路径了. 不能用本地路径
-    file_rdd = sc.textFile("hdfs://node1:8020/input/order.text")
-
+    # file_rdd = sc.textFile("hdfs://node1:8020/input/order.text")
+    # file_rdd = sc.textFile("hdfs://localhost:9000/input/order.text")
+    # file_rdd = sc.textFile("/input/order.text")
+    file_rdd = sc.textFile("hdfs:///input/order.text")
     # 进行rdd数据的split 按照|符号进行, 得到一个个的json数据
     jsons_rdd = file_rdd.flatMap(lambda line: line.split("|"))
 

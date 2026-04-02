@@ -8,7 +8,7 @@ if __name__ == '__main__':
     sc = SparkContext(conf=conf)
 
     # 读取数据文件
-    file_rdd = sc.textFile("../data/input/order.text")
+    file_rdd = sc.textFile("../../data/input/order.text")
 
     # 进行rdd数据的split 按照|符号进行, 得到一个个的json数据
     jsons_rdd = file_rdd.flatMap(lambda line: line.split("|"))
