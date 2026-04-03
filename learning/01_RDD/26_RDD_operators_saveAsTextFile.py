@@ -8,4 +8,6 @@ if __name__ == '__main__':
 
     rdd = sc.parallelize([1, 3, 2, 4, 7, 9, 6], 3)
 
-    rdd.saveAsTextFile("hdfs://node1:8020/output/out1")
+    # rdd.saveAsTextFile("hdfs://node1:8020/output/out1")
+    # rdd.saveAsTextFile("hdfs://localhost:9000/output/out1")
+    rdd.saveAsTextFile("hdfs://localhost:9000/output/out3")

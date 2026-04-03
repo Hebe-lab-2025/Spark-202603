@@ -6,11 +6,13 @@ from pyspark.storagelevel import StorageLevel
 import re
 
 if __name__ == '__main__':
-    conf = SparkConf().setAppName("test").setMaster("local[*]")
+    # conf = SparkConf().setAppName("test").setMaster("local[*]")
+    conf = SparkConf().setAppName("test")
     sc = SparkContext(conf=conf)
 
     # 1. 读取数据文件
-    file_rdd = sc.textFile("../data/input/accumulator_broadcast_data.txt")
+    # file_rdd = sc.textFile("../../data/input/accumulator_broadcast_data.txt")
+    file_rdd = sc.textFile("hdfs://localhost:9000/input/accumulator_broadcast_data.txt")
 
     # 特殊字符的list定义
     abnormal_char = [",", ".", "!", "#", "$", "%"]
@@ -52,3 +54,4 @@ if __name__ == '__main__':
 
     print("正常单词计数结果: ", result_rdd.collect())
     print("特殊字符数量: ", acmlt)
+    time.sleep(100000)

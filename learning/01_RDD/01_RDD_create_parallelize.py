@@ -23,7 +23,8 @@ print("java -version:\n", out.decode())
 from pyspark import SparkConf, SparkContext
 
 if __name__ == '__main__':
-    conf = SparkConf().setAppName("test").setMaster("local[*]")
+    # conf = SparkConf().setAppName("test").setMaster("local[*]")
+    conf = SparkConf().setAppName("test")
     sc = SparkContext(conf=conf)
 
     rdd = sc.parallelize([1, 2, 3, 4, 5])
